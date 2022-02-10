@@ -14,12 +14,16 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "apollo-server": "^3.6.2",
     "apollo-server-core": "^3.6.1",
     "apollo-server-express": "^3.6.1",
+    "bcrypt": "^5.0.1",
     "debug": "^4.3.3",
     "env-cmd": "^10.1.0",
     "express": "^4.17.2",
     "graphql": "^16.2.0",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.7"
   }
 }

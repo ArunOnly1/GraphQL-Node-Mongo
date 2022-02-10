@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import { Schema, model } from 'mongoose'
 
-const postSchema = new mongoose.Schema({
+const postSchema = new Schema({
   title: {
     type: String,
     minlength: [2, 'Too small title'],
@@ -15,8 +15,12 @@ const postSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
+  creatorId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
 })
 
-const Post = mongoose.model('Post', postSchema)
+const Post = model('Post', postSchema)
 
 export default Post

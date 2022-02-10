@@ -1,14 +1,20 @@
-import { gql } from 'apollo-server-express'
+import { gql } from 'apollo-server-core'
 
 const typeDefs = gql`
   type Query {
     hello: String!
-    posts: [Post!]!
+    welcome: String!
   }
 
   type Mutation {
-    createPost(data: createPostInput!): Post!
-    updatePost(id: ID!, data: updatePostInput!): Post!
+    signUp(data: SignUpInput!): User!
+    login(data: LoginInput!): Token!
+    createPost(data: CreatePostInput!): String!
+  }
+
+  type Token {
+    accesstoken: String!
+    refreshtoken: String!
   }
 
   type Post {
@@ -17,14 +23,37 @@ const typeDefs = gql`
     body: String!
   }
 
-  input createPostInput {
+  input CreatePostInput {
     title: String!
     body: String!
   }
-  input updatePostInput {
-    title: String
-    body: String
+  input LoginInput {
+    email: String!
+    password: String!
+  }
+
+  input SignUpInput {
+    email: String!
+    password: String!
+    username: String!
+    role: Role!
+    avatar: String
+  }
+
+  enum Role {
+    ADMIN
+    USER
+  }
+
+  type User {
+    _id: ID!
+    email: String!
+    password: String!
+    username: String!
+    role: Role!
+    avatar: String
+    createdAt: String!
+    updatedAt: String!
   }
 `
-
 export { typeDefs as default }
